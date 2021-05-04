@@ -1,0 +1,241 @@
+@import "vars.scss";
+
+@media (max-width: 1023px) {
+    .footer {
+        width: 100%;
+        height: auto;
+        @include sm-sh;
+        @include flex-column;
+        gap: 2rem;
+
+        // Google Maps Section
+        &__first {
+            width: 100%;
+            height: auto;
+            background-color: #fff;
+
+            @include sm-sh;
+        }
+
+        &__map {
+            height: 360px;
+            margin: auto;
+            width: 95%;
+
+            iframe {
+                width: 100%;
+                height: 300px;
+                border: 0;
+            }
+        }
+
+        &__maps {
+            height: 360px;
+        }
+
+
+        // Contacts section
+        &__address {
+            width: 100%;
+            height: auto;
+            padding: 0 0 1rem 0;
+
+            address {
+                padding: 1rem 0 1rem 0;
+            }
+
+            ul {
+                row-gap: 2rem;
+            }
+        }
+
+        &__second {
+            width: 100%;
+            height: auto;
+
+            @include sm-sh;
+            @include flex-column;
+
+            row-gap: 1rem;
+
+            background-color: #fff;
+
+            h1 {
+                color: white;
+            }
+        }
+
+        &__rights {
+            color: rgb(216, 216, 216);
+            font-size: 1.4rem;
+        }
+
+        &__useful-links {
+            background-color: #fff;
+        }
+
+        &__nav {
+            width: 100%;
+            height: auto;
+
+            background-color: #fff;
+            @include flex-column;
+            row-gap: 2rem;
+        }
+
+        &__nav li {
+            line-height: 3rem;
+        }
+
+        &__nav a {
+            font-size: 2rem;
+            font-weight: 300;
+
+            color: rgba(255, 255, 255, 0.76);
+            text-shadow: 1px .8px 1px rgb(0, 0, 0);
+        }
+
+        &__item {
+            width: 95%;
+            @include flex-column;
+            justify-content: space-between;
+
+            row-gap: .5rem;
+        }
+
+        &__caption,
+        &__subcaption {
+            font-style: normal;
+        }
+
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    .footer {
+
+        h1 {
+            margin-bottom: 1rem !important;
+        }
+
+        &__first {
+            height: 300px;
+            width: 100%;
+
+            @include flex-row;
+            @include sm-sh;
+
+            background-color: #fff;
+
+            gap: 10px;
+
+            border-radius: 12px;
+        }
+
+        &__maps {
+            width: 45%;
+
+            @include flex-column;
+
+            height: 100%;
+        }
+
+        &__map {
+            height: 90%;
+
+            iframe {
+                width: 400px;
+                height: 220px;
+            }
+        }
+
+        &__address {
+            width: 55%;
+        }
+
+        address ul {
+            height: 90%;
+            @include flex-column;
+
+            margin: auto;
+            gap: 40px;
+
+            h2,
+            h3 {
+                font-style: normal;
+                @include flex-row;
+                justify-content: center;
+            }
+
+            h2 {
+                font-weight: 500;
+            }
+        }
+
+        &__item {
+            @include flex-column;
+            align-items: center;
+            margin: {
+                left: auto;
+                right: auto;
+            }
+            gap: 5px;
+        }
+
+        &__second {
+            width: 100%;
+            height: 400px;
+
+            background-color: #fff;
+            border-radius: 12px;
+
+            @include sm-sh;
+
+            margin-bottom: 25px;
+            border: none;
+
+        }
+
+        &__nav {
+            height: 70%;
+            @include flex-row;
+            justify-content: space-around;
+
+            ul {
+                min-height: 75%;
+                max-height: 100%;
+                @include flex-column;
+                gap: 1rem;
+                justify-content: flex-start;
+            }
+        }
+
+        &__link {
+            color: rgb(51, 48, 48);
+            font-weight: 300;
+            font-size: 1.1rem;
+        }
+
+        &__useful-links {
+            width: 100%;
+            height: 100%;
+        }
+
+        &__rights {
+            width: 98%;
+            height: 13%;
+
+            color: rgb(68, 68, 68);
+
+            font-size: .8rem;
+
+            @include flex-row;
+
+            margin-right: 10px;
+            margin-left: auto;
+
+            align-items: flex-end;
+            justify-content: flex-end;
+        }
+    }
+}

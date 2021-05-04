@@ -1,0 +1,245 @@
+@import 'vars.scss';
+
+@media only screen and (min-width: 1024px) {
+    main.posts {
+        @include flex-row;
+    }
+
+    section.category {
+        width: 75%;
+        background-color: #fff;
+
+        padding: 10px;
+
+        @include sm-sh;
+        border-radius: 12px;
+
+        @include flex-column;
+        gap: 10px;
+
+        >h1.title {
+            font-size: 1.2rem;
+
+            max-height: 60px;
+
+            margin: 0;
+
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+    }
+
+    .category {
+        &__posts {
+            width: 100%;
+            height: 100%;
+
+            @include flex-column;
+            gap: 10px;
+
+            ul {
+                width: 100%;
+            }
+        }
+
+        &__item {
+            width: 100%;
+            height: fit-content;
+
+            max-height: 330px;
+        }
+
+        &__post {
+            height: fit-content;
+            width: 100%;
+
+            max-height: 330px;
+
+            min-height: 180px;
+
+            padding: .5rem;
+            @include flex-row;
+
+            >img,
+            img.category__picture {
+                max-width: 450px;
+                max-height: 300px;
+
+                height: fit-content;
+
+                align-self: center;
+
+                border: 1px double rgb(49, 49, 49);
+                border-radius: 10px;
+            }
+
+            gap: .5rem;
+        }
+
+        &__interaction {
+            position: absolute;
+            width: 40%;
+            right: 30px;
+            bottom: 25px;
+
+            display: flex;
+            flex-flow: row nowrap;
+
+            justify-content: flex-end;
+        }
+
+        &__content-wrapper {
+            width: 100%;
+            height: fit-content;
+
+            max-height: 400px;
+            @include flex-column;
+
+            overflow: hidden;
+
+            gap: .5rem;
+
+            h2,
+            h3 {
+                margin: 0 !important;
+            }
+
+            h2 {
+                display: -webkit-box;
+                -webkit-line-clamp: 3;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                text-shadow: .4px .4px 1px rgb(117, 117, 117);
+            }
+
+            h3 {
+                font-size: .75rem !important;
+
+                color: rgb(83, 83, 83) !important;
+                text-shadow: .4px .4px 1px rgb(23, 23, 23);
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 1023px) {
+    section.category {
+        width: 100%;
+        height: auto;
+        overflow: hidden;
+
+        @include flex-column;
+
+        background-color: #ececec;
+
+        gap: 10px;
+
+        >h1.title {
+            font-size: 1.5rem;
+            line-height: 1.3;
+
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+
+            padding-top: 10px;
+
+            background-color: #fff;
+
+            width: 100%;
+        }
+    }
+
+    .category {
+        &__posts {
+            width: 100%;
+            height: auto;
+
+            margin-top: 5px;
+
+            ul {
+                row-gap: 20px;
+
+                background-color: #ececec;
+            }
+        }
+
+        &__item {
+            width: 100%;
+
+            background-color: #fff;
+
+            @include sm-sh;
+        }
+
+        &__post {
+            width: 98%;
+            height: auto;
+
+            max-height: 650px;
+
+            overflow: hidden;
+
+            margin: auto;
+
+            @include flex-column;
+
+            padding: {
+                top: 1rem;
+                bottom: 1rem;
+            }
+        }
+
+        &__content-wrapper {
+            height: auto;
+
+            @include flex-column;
+
+            gap: .2rem;
+
+            padding: {
+                top: 0;
+                bottom: 1rem;
+
+                left: .5rem;
+                right: .5rem;
+            }
+
+            h2 {
+                font-size: 1.4rem !important;
+
+                line-height: 1.15;
+
+
+                @include text-overflow-3;
+            }
+
+            h3 {
+                color: gray !important;
+
+                width: 100% !important;
+
+                text-shadow: .3px .3px .3px rgb(150, 150, 150);
+
+                line-height: 1.3;
+
+                @include text-overflow-3;
+            }
+        }
+
+        &__interaction {
+            @include flex-row;
+            width: 100%;
+
+            justify-content: flex-end;
+
+            padding: {
+                left: 20px;
+                right: 50px;
+            }
+        }
+    }
+}

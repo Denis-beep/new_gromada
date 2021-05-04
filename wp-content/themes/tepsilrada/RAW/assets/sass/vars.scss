@@ -1,0 +1,105 @@
+$titles_ff: 'Roboto',
+sans-serif;
+$text_ff: 'Inter',
+sans-serif;
+
+$link_red: rgb(175, 7, 7);
+
+@mixin titles-styles {
+  font-family: $titles_ff;
+  position: relative;
+  text-align: center;
+  font-size: 2.4rem;
+  font-weight: 400;
+  color: #0037ff;
+  margin: auto;
+
+  @media (min-width: 1024px) {
+    font-size: 1.55rem;
+  }
+}
+
+@mixin text-overflow-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@mixin input-styles {
+  color: gray;
+
+  border-radius: 25px;
+
+  font-size: 1.3rem;
+
+  padding: {
+    left: .5rem;
+  }
+
+  outline: none;
+  border: rgb(193, 193, 193) 1px solid;
+
+  transition: all .5s ease-in-out;
+
+  &:focus {
+    box-shadow: inset .5px .5px 3px rgb(88, 88, 88);
+  }
+}
+
+@mixin sh-md {
+  box-shadow: 1px 1px 5px #adadad;
+
+  @media screen and (max-width: 720px) {
+    box-shadow: 1px 1px 2px #adadad;
+  }
+
+}
+
+
+
+@mixin subtitle {
+  font-size: 1.45rem;
+  font-weight: 400;
+  color: #001666;
+  text-align: center;
+
+  @media (max-width: 380px) {
+    font-size: 1.4rem;
+  }
+
+  @media (min-width: 720px) {
+    font-size: 1.2rem;
+  }
+}
+
+@mixin captions_styles {
+  font-family: $text_ff;
+  position: relative;
+  font-size: 1rem;
+  font-weight: 400;
+  text-align: center;
+  margin: auto;
+}
+
+@mixin sm-sh {
+  border: rgba(94, 94, 94, 0.253) 1px solid;
+  box-shadow: 2px 2px 15px #adadad;
+
+  @media screen and (max-width: 720px) {
+    box-shadow: 1px 1px 2px #adadad;
+  }
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  position: relative;
+}
+
+@mixin flex-row {
+  display: flex;
+  flex-flow: row nowrap;
+  position: relative;
+}

@@ -1,0 +1,266 @@
+@import "vars.scss";
+
+@media (max-width: 1023px) {
+  .floating-nav {
+    display: none;
+  }
+
+  header.short-header {
+    display: none;
+  }
+
+  .header {
+    &--large {
+      height: 100vh;
+      width: 100%;
+      background-color: white;
+      @include flex-column;
+      gap: 1.2rem;
+
+      @include sm-sh;
+    }
+
+    &__logo {
+      &-wrapper {
+        width: 100%;
+        height: 440px;
+        padding: 1rem 0 0 0;
+        z-index: 100;
+        @include flex-column;
+
+        a img {
+          position: relative;
+          height: 420px;
+
+          width: 300px;
+          margin: auto;
+        }
+      }
+
+      @media (min-width: 720px) {
+        width: 320px;
+        height: 420px;
+      }
+    }
+
+    &__arrow--down {
+      border-radius: 100%;
+      background-color: transparent;
+      height: 85px;
+      width: 85px;
+      @include flex-column;
+      justify-content: center;
+      position: absolute;
+      bottom: 20px;
+
+      svg {
+        height: 65px;
+        position: absolute;
+        fill: rgb(0, 0, 0);
+      }
+    }
+  }
+
+
+}
+
+@media (min-width: 1024px) {
+  .header {
+    &--large {
+      height: 100vh;
+      width: 100%;
+
+      background-color: #fff;
+
+      @include flex-column;
+      @include sm-sh;
+
+      margin: auto;
+
+      justify-content: space-between;
+
+      border-bottom-left-radius: 12px;
+      border-bottom-right-radius: 12px;
+    }
+
+    &__logo-wrapper {
+      width: 100%;
+      height: fit-content;
+
+      padding-bottom: 35px;
+
+      a {
+        width: 300px;
+        display: flex;
+        flex-flow: row nowrap;
+
+        margin: auto;
+
+        justify-content: center;
+        align-items: center;
+      }
+
+      a img {
+        width: 350px;
+        height: auto;
+      }
+    }
+
+    &__info {
+      width: 100%;
+      height: 25%;
+
+      @include flex-column;
+    }
+
+    &__search {
+      margin-bottom: 10px;
+      height: 40px !important;
+    }
+  }
+
+  .short-header {
+    width: 98%;
+    height: auto;
+
+    max-height: 120px;
+
+    margin-top: 10px;
+
+    border-radius: 12px;
+
+    background-color: #fff;
+
+    position: relative;
+
+    @include sm-sh;
+
+    display: grid;
+    grid-template-columns: 45% 10% 45%;
+
+    section {
+      height: 120px;
+    }
+
+    &__info {
+      @include flex-column;
+      height: 100%;
+
+      h1,
+      h3 {
+        margin: 0;
+        width: 100%;
+        text-align: right !important;
+        font-size: 1.1rem;
+      }
+
+      h3 {
+        font-size: 1rem !important;
+      }
+
+      h1 {
+        margin: .6rem 0 .3rem 0 !important;
+
+      }
+    }
+
+    &__logo-wrapper {
+      height: 100%;
+      position: relative;
+
+      a {
+        width: 80px;
+        height: 95%;
+
+        display: flex;
+        flex-flow: row;
+
+        margin: auto;
+      }
+
+      a img {
+        width: 80px;
+        height: 95%;
+
+        display: flex;
+
+        margin: auto;
+
+      }
+    }
+
+    &__other {
+      height: 100%;
+      @include flex-column;
+      justify-content: space-evenly;
+
+      .search.container {
+        @include flex-row;
+        justify-content: flex-start;
+      }
+    }
+
+    &__nav {
+      width: 100%;
+      height: auto;
+
+      max-height: 45%;
+
+      overflow: hidden;
+
+      ul {
+        width: 98%;
+        height: auto;
+
+        max-height: 100%;
+
+        overflow: hidden;
+
+        display: flex;
+        flex-flow: row wrap;
+
+        justify-content: flex-start;
+
+        padding: .1rem;
+
+        gap: 1rem;
+
+        margin: {
+          left: auto;
+          right: auto;
+          top: 2px;
+        }
+
+        li {
+          width: auto;
+
+          a {
+            display: flex;
+            text-align: center;
+            width: fit-content;
+
+            font: {
+              family: $titles_ff;
+              weight: 300;
+            }
+
+            color: $link_red;
+
+            transition: text-shadow linear 150ms;
+
+            margin: {
+              left: auto;
+              right: auto;
+            }
+
+            &:hover {
+              text-shadow: .4px .3px .4px $link_red;
+            }
+          }
+        }
+      }
+    }
+  }
+
+
+}

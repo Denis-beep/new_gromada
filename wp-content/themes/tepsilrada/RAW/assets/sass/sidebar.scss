@@ -1,0 +1,191 @@
+@import "vars.scss";
+
+@media screen and (max-width: 1023px) {
+  #sidebar {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    transform: translateX(100%);
+    top: 0;
+    z-index: 1000;
+    overflow-y: scroll;
+    background-color: #fff;
+    transition: transform 1.4s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+
+    h1 {
+      margin: 1rem 0 .5rem 0;
+    }
+
+    &.--visible {
+      transform: translateX(0);
+    }
+  }
+
+  .sidebar {
+    &__links {
+      width: 100%;
+      height: fit-content;
+      position: relative;
+
+      li {
+        @include flex-column;
+        width: 100%;
+        justify-content: center;
+
+        img {
+          width: 100%;
+        }
+
+        ul {
+          @include flex-column;
+          position: relative;
+          transition: all 1s linear;
+          display: flex;
+          top: 0;
+
+          a {
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: gray;
+          }
+        }
+      }
+    }
+
+    &__useful-links {
+      img {
+        width: 90%;
+      }
+    }
+
+    &__weather {
+      width: 80% !important;
+      height: auto;
+
+      margin: auto !important;
+    }
+
+    &__list {
+      @include flex-column;
+      align-items: start;
+      gap: 1rem;
+
+      > li {
+        position: relative;
+        height: fit-content;
+        text-align: center;
+
+        > a {
+          font-weight: 500;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  #sidebar {
+    width: 25%;
+    @include sm-sh;
+    border-radius: 12px;
+    background-color: white;
+
+    @include flex-column;
+    gap: 10px;
+  }
+
+  .sidebar {
+    &__links {
+      width: 100%;
+      height: auto;
+    }
+
+    &__list {
+      height: 100%;
+      @include flex-column;
+      gap: 15px;
+
+      > li {
+        width: 100%;
+        height: fit-content;
+        position: relative;
+
+        ul {
+          background-color: #fff;
+          border: 1px solid rgba(128, 128, 128, 0.49);
+          border-top-left-radius: 12px;
+          border-bottom-left-radius: 12px;
+          padding: .4rem;
+          position: absolute !important;
+          visibility: hidden;
+          //left: -100%;
+          //top: 50%;
+          transform: translate(-100%, -70%);
+          @include flex-column;
+          gap: .7rem;
+          height: fit-content;
+
+          &.--visible {
+            visibility: visible;
+          }
+        }
+
+        &:nth-child(even) {
+          > a {
+            color: #ffff00;
+            text-shadow: 1.4px 1px .2px rgba(0, 0, 0, 0.469);
+          }
+        }
+
+        &:nth-child(odd) {
+          a {
+            color: rgb(0, 55, 255);
+          }
+        }
+      }
+    }
+
+    &__arrow-down {
+      position: absolute;
+      width: 20px;
+
+      right: 30px;
+      top: 0;
+    }
+
+    &__link {
+      width: fit-content;
+      font-size: .95rem;
+      height: fit-content;
+      position: relative;
+      display: flex;
+      flex-flow: row nowrap;
+      text-align: left;
+
+      color: rgb(3, 3, 3);
+      font-weight: 400;
+
+      img {
+        width: auto;
+        max-height: 200px;
+        max-width: 85%;
+
+        margin: {
+          bottom: 10px;
+        }
+      }
+    }
+
+    &__weather {
+      width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    &__useful-links {
+      width: 90%;
+
+      @include flex-column;
+    }
+  }
+}

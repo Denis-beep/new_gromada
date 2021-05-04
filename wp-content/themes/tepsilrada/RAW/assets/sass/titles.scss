@@ -1,0 +1,132 @@
+@import "vars.scss";
+
+:root {
+  -webkit-font-smoothing: subpixel-antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+@media (max-width: 1023px) {
+  a {
+    text-decoration: none;
+    color: black;
+    font-weight: 300;
+    font-size: 2rem;
+    padding: 0.5rem;
+  }
+
+  h1[class*=title] {
+    @include titles-styles;
+  }
+
+  .header {
+    &__info {
+      width: 100%;
+      height: fit-content;
+      padding-bottom: 1rem;
+      @include flex-column;
+
+      h1 {
+        @include titles-styles;
+        margin: 0 0 1.5rem 0;
+        width: 90%;
+
+        @media (min-width: 720px) {
+          font-size: 2rem;
+        }
+      }
+
+      h3 {
+        font-size: 1.45rem;
+        font-weight: 400;
+        color: #001666;
+        text-align: center;
+
+        @media (max-width: 380px) {
+          font-size: 1.4rem;
+        }
+
+        @media (min-width: 720px) {
+          font-size: 1.2rem;
+        }
+      }
+    }
+  }
+
+  h2[class*="caption"] {
+    @include titles-styles;
+    font-size: 2rem;
+    font-weight: 400;
+  }
+
+  h3[class*="subcaption"] {
+    @include titles-styles;
+    width: 80%;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #cb0101;
+  }
+
+  .title {
+    &--thin {
+      font-weight: 200 !important;
+    }
+  }
+
+  .news {
+    &__caption {
+      font-size: 1.45rem !important;
+      width: 90%;
+      font-weight: 500 !important;
+    }
+  }
+
+
+}
+
+@media (min-width: 1024px) {
+
+  h1[class*=title],
+  legend[class*=title] {
+    @include titles-styles;
+  }
+
+  h3[class*=subtitle] {
+    @include subtitle;
+  }
+
+  h1[class*=title--thin] {
+    font-weight: 100 !important;
+  }
+
+
+  h2[class*="caption"] {
+    @include captions_styles;
+    color: #002fda;
+  }
+
+  h3[class*="subcaption"] {
+    font-family: $text_ff;
+    width: auto;
+    font-size: .65rem;
+    text-align: center;
+    margin: auto;
+    max-width: 90%;
+    font-weight: 500;
+    color: #c40101;
+  }
+
+  .header {
+    &__info h1[class*=title] {
+      @include titles-styles;
+      margin: 0 0 .3rem 0;
+    }
+
+    &__info h3[class*=subtitle] {
+      font-size: .85rem;
+      text-align: center;
+      color: #001666;
+      font-weight: 400;
+    }
+  }
+}

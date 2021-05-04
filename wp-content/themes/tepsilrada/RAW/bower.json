@@ -1,0 +1,21 @@
+{
+  "name": "gromada",
+  "description": "Government Blog",
+  "main": "index.html",
+  "authors": [
+    "me"
+  ],
+  "license": "ISC",
+  "homepage": "https://teplytska-gromada.org.ua",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "jquery": "^3.6.0"
+  }
+}
