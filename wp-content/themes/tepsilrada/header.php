@@ -19,9 +19,8 @@ $uri = get_template_directory_uri();
     <meta name="description" content="Теплицька територіальна громада">
     <link rel="preconnect" href="https://fonts.gstatic.com"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&family=Oswald:wght@200;300;400;500;600;700&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;&display=swap"
           rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet"/>
     <?php wp_head(); ?>
 </head>
 
@@ -67,22 +66,32 @@ $uri = get_template_directory_uri();
         </div>
     </header>
     <div data-modal="schedule" class="modal schedule" role="dialog">
-        <h1 class="title"><?php the_field('council_head_title') ?></h1>
-        <ul class="schedule__list mobile-list">
-            <?php $rows = get_field('council_head_timetable');
-            if ($rows) : ?>
-                <?php foreach ($rows as $row) : ?>
-                    <li>
-                        <h2 class="caption"><?= $row['day']; ?></h2>
-                        <h3 class="subcaption"><?= $row['time']; ?></h3>
-                    </li>
-                <?php endforeach; ?>
-            <?php endif; ?>
-        </ul>
+        <div class="schedule__council-head">
+            <h2 class="title"><?php the_field('council_head_title', 'options') ?></h2>
+            <h3 class="caption">
+                <?php the_field('council_head_timetable', 'options');?>
+            </h3>
+        </div>
+        <div class="schedule__secretary">
+            <h2 class="title">
+                <?php the_field('council_secretary_position', 'options') ?>
+            </h2>
+            <h3 class="caption">
+                <?php the_field('council_secretary_timetable', 'options') ?>
+            </h3>
+        </div>
+        <div class="schedule__deputy">
+            <h2 class="title">
+                <?php the_field('council_head_deputy_position', 'options') ?>
+            </h2>
+            <h3 class="caption">
+                <?php the_field('council_head_deputy_timetable', 'options') ?>
+            </h3>
+        </div>
     </div>
     <div data-modal="letter" class="modal letter" role="dialog">
         <form method="POST" action="<?= admin_url() . 'admin-ajax.php' ?>" class="letter__form">
-            <h1 class="title">Письмо до голови</h1>
+            <h1 class="title">Лист до голови</h1>
             <fieldset class="letter__userdata">
                 <div class="letter__fields">
                     <label for="letter__email">Ваш е-мейл</label>
@@ -93,11 +102,11 @@ $uri = get_template_directory_uri();
                     <input name="phone" required type="tel" id="letter__phone" class="letter__phone">
                 </div>
                 <div class="letter__fields">
-                    <label for="letter__name">Ваше имя</label>
+                    <label for="letter__name">Ваше ім‘я</label>
                     <input name="name" required type="text" id="letter__name" class="letter__name">
                 </div>
                 <div class="letter__fields">
-                    <label for="letter__lastname">Ваша фамилия</label>
+                    <label for="letter__lastname">Ваше прізвище</label>
                     <input name="lastname" required type="text" id="letter__lastname" class="letter__lastname">
                 </div>
             </fieldset>
@@ -105,7 +114,7 @@ $uri = get_template_directory_uri();
                 <label for="letter__text">Ваш запит</label>
                 <textarea name="message" required id="letter__text" cols="50" rows="10"></textarea>
             </div>
-            <button class="button--md" type="submit">Отправить</button>
+            <button class="button--md" type="submit">Надіслати</button>
         </form>
     </div>
 

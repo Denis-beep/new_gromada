@@ -16,7 +16,12 @@ get_header();
         <article class="post">
             <h1 class="title"><?php the_title();?></h1>
             <div class="post__info" role="article" aria-label="text">
+				<div class="post__date">
+					<span class="news__date"><?= get_the_date('d.m.Y'); ?></span>
+				</div>
+				
                 <?php the_content();?>
+				
             </div>
         </article>
         <?php get_sidebar(); ?>

@@ -15,7 +15,7 @@ $items = wp_get_nav_menu_items('side_menu');
 ?>
 <aside data-modal="sidebar" id="sidebar" class="sidebar">
     <section class="sidebar__links section">
-        <h1 class="sidebar title--thin">Меню</h1>
+        <h1 class="sidebar title--thin"><?= get_field('menu_title', 'options') ?></h1>
         <nav class="sidebar__links">
             <?php wp_nav_menu( [
                 'theme-location'=> 'side_menu',

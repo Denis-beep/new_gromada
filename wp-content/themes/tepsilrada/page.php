@@ -18,29 +18,29 @@ get_header();
 <?php if (is_front_page()): ?>
     <?php
     $deputies = get_field('deputies');
-
-    $posts = get_posts(array(
-        'numberposts' => 5,
+	$args = array(
+        'numberposts' => 7,
         'orderby' => 'date',
         'order' => 'DESC',
-        'include' => array(),
-        'exclude' => array(),
-        'tag' => 'Карусель',
-        'nopaging' => true,
-        'post_type' => 'post',
-    ));
+		'category' => 45
+    );
+
+    $posts = get_posts($args);
 
     setup_postdata($posts);
 
     $uri = get_template_directory_uri();
     $book = $uri . '/assets/embedded/book.svg';
     ?>
-
+<div class="alert">
+  <h1 class="alert title--thin">Сайт працює у тестовому режимі.</h1>
+</div>
     <main class="main">
+		
         <div class="backdrop"></div>
 
         <section class="slider section">
-            <h1 class="slider title--thin">Анонси</h1>
+            <h1 class="slider title--thin"><?= get_field('slider_title', 'options'); ?></h1>
             <div class="splide">
                 <div class="splide__track">
                     <ul class="splide__list">
@@ -63,16 +63,16 @@ get_header();
             </div>
         </section>
         <section class="council-heads section">
-            <h1 class="council-heads title--thin">Аппарат сільської ради</h1>
+            <h1 class="council-heads title--thin"><?= get_field('council_heads_title', 'options'); ?></h1>
             <div class="mobile-list council-heads">
                 <div class="council-heads__item">
-                    <img src="<?php the_field('council_head_photo'); ?>"
+                    <img src="<?php the_field('council_head_photo', 'options'); ?>"
                          alt="Leontev"
                          class="council-heads__picture"/>
                     <div class="council-heads__info">
-                        <h2 class="council-heads__caption"><?php the_field('council_head_title'); ?></h2>
+                        <h2 class="council-heads__caption"><?php the_field('council_head_title', 'options'); ?></h2>
                         <h3 class="council-heads__subcaption">
-                            <?php the_field('council_head_subtitle'); ?>
+                            <?php the_field('council_head_subtitle', 'options'); ?>
                         </h3>
                     </div>
                     <div class="council-heads__interaction">
@@ -87,34 +87,23 @@ get_header();
                     </div>
                 </div>
                 <div class="council-heads__item">
-                    <img src="<?php the_field('council_secretary_photo'); ?>"
+                    <img src="<?php the_field('council_secretary_photo', 'options'); ?>"
                          alt="Карат"
                          class="council-heads__picture"/>
                     <div class="council-heads__info">
-                        <h2 class="council-heads__caption"><?php the_field('council_secretary_name'); ?></h2>
+                        <h2 class="council-heads__caption"><?php the_field('council_secretary_name', 'options'); ?></h2>
 
-                        <h3 class="council-heads__subcaption"><?php the_field('council_secretary_position'); ?></h3>
+                        <h3 class="council-heads__subcaption"><?php the_field('council_secretary_position', 'options'); ?></h3>
                     </div>
                 </div>
-                <div class="council-heads__item">
-                    <img src="<?php the_field('council_head_deputy_photo'); ?>"
-                         alt="Leontev"
-                         class="council-heads__picture"/>
-                    <div class="council-heads__info">
-                        <h2 class="council-heads__caption"><?php the_field('council_head_deputy_name'); ?></h2>
-
-                        <h3 class="council-heads__subcaption">
-                            <?php the_field('council_head_deputy_position') ?>
-                        </h3>
-                    </div>
-                </div>
+               
             </div>
         </section>
 
         <section class="dual section">
             <section class="leftside">
                 <section class="news section">
-                    <h1 class="news title--thin">Новини</h1>
+                    <h1 class="news title--thin"><?= get_field('news_title', 'options')?></h1>
 
                     <ul class="mobile-list news">
                         <?php
@@ -122,8 +111,6 @@ get_header();
                             'numberposts' => 5,
                             'orderby' => 'date',
                             'order' => 'DESC',
-                            'nopaging' => true,
-                            'post_type' => 'post',
                             'category' => 45
                         ));
 
@@ -138,7 +125,7 @@ get_header();
                     </ul>
                 </section>
                 <section class="deputies section">
-                    <h1 class="title--thin">Депутатський корпус</h1>
+                    <h1 class="title--thin"><?= get_field('deputy_corps_title', 'options'); ?></h1>
                     <ul class="mobile-list deputies">
                         <?php foreach ($deputies as $deputy): ?>
                             <?php $image = $deputy['deputies_photo'] ?>

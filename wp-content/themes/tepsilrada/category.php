@@ -8,8 +8,6 @@
  */
 
 get_header();
-
-dump(get_fields('options'));
 ?>
     <main class="posts">
         <section class="category">
@@ -38,6 +36,7 @@ dump(get_fields('options'));
                                         </h3>
                                     </div>
                                     <div class="category__interaction">
+										<span class="news__date"><?= get_the_date('d.m.Y'); ?></span>
                                         <a class="button--sm" href="<?php the_permalink() ?>">
                                             Читати
                                             <img src="<?= get_template_directory_uri() . '/assets/embedded/book.svg' ?>"

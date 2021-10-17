@@ -16,7 +16,7 @@ function mailReceiver()
     $headers = array("From: $lastname $name. <$email>", "Content-Type: text/html");
 
     $readyMessage = "Письмо від: $lastname $name. <br>E-mail: $email. <br>Телефон: $phone.<br><br> Повідомлення: $message";
-    $mail = wp_mail("fakslop@gmail.com", 'Письмо до Івана Леонтьєва від громадян', $readyMessage, $headers);
+    $mail = wp_mail("04377428@mail.gov.ua", 'Письмо до Івана Леонтьєва від громадян', $readyMessage, $headers);
     $mail === true ? wp_send_json_success() : wp_send_json_error();
     wp_die();
 }
