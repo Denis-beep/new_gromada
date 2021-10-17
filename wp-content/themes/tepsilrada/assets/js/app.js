@@ -1,5 +1,7 @@
 "use strict";
 
+import Splide from "../../node_modules/@splidejs/splide/dist/js/splide.min.js";
+
 let $ = jQuery;
 let scrolled = false;
 
@@ -9,7 +11,7 @@ $(function () {
 
   $("button[data-reference], div[class*='floating-button']").on('click', function () {
     let ref = $(this).data("reference");
-    let modal = $("main").find(`[data-modal="${ref}"]`)[0];
+    let modal = $("body").find(`[data-modal="${ref}"]`)[0];
     if (modal) toggleModal(modal);
   })
 
@@ -53,7 +55,6 @@ $(function () {
 function toggleModal(el) {
   $(el).toggleClass('--visible');
   $('.backdrop').toggleClass('--visible');
-  $('html,body').toggleClass('fixed');
 }
 
 

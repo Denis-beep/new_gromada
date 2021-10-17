@@ -10,7 +10,7 @@
 
 if (!defined('_S_VERSION')) {
 	// Replace the version number of the theme on each release.
-	define('_S_VERSION', '1.0.0');
+	define('_S_VERSION', '1.0.5');
 }
 
 if (!function_exists('tepsilrada_setup')) :
@@ -143,37 +143,37 @@ add_action('widgets_init', 'tepsilrada_widgets_init');
 if (function_exists('acf_add_options_page')) {
 
 	acf_add_options_page(array(
-		'page_title' 	=> 'Theme General Settings',
-		'menu_title'	=> 'Доп. поля',
+		'page_title' 	=> 'Iнформацiя',
+		'menu_title'	=> 'Iнформацiя',
 		'menu_slug' 	=> 'theme-general-settings',
 		'capability'	=> 'edit_posts',
 		'redirect'		=> false
 	));
 
 	acf_add_options_sub_page(array(
-		'page_title' 	=> 'Theme Header Settings',
+		'page_title' 	=> 'Шапка',
 		'menu_title'	=> 'Шапка',
 		'parent_slug'	=> 'theme-general-settings',
 		'menu_slug'		=> 'theme-header-settings',
 		'redirect'		=> false,
 		'capability'	=> 'edit_posts',
+	));
+	
+	acf_add_options_sub_page(array(
+		'page_title' 	=> 'Бiчне меню',
+		'menu_title'	=> 'Бiчне меню',
+		'parent_slug'	=> 'theme-general-settings',
+		'menu_slug'		=> 'theme-sidebar-settings',
+		'redirect'		=> false,
+		'capability'	=> 'edit_posts',
 
 	));
 
 	acf_add_options_sub_page(array(
-		'page_title' 	=> 'Theme Footer Settings',
+		'page_title' 	=> 'Футер',
 		'menu_title'	=> 'Футер',
 		'parent_slug'	=> 'theme-general-settings',
 		'menu_slug'		=> 'theme-footer-settings',
-		'redirect'		=> false,
-		'capability'	=> 'edit_posts',
-	));
-
-	acf_add_options_sub_page(array(
-		'page_title' 	=> 'Theme Sidebar Settings',
-		'menu_title'	=> 'Бічне меню',
-		'parent_slug'	=> 'theme-general-settings',
-		'menu_slug'		=> 'theme-sidebar-settings',
 		'redirect'		=> false,
 		'capability'	=> 'edit_posts',
 	));
@@ -187,6 +187,20 @@ function first_paragraph($content)
 
 require get_template_directory() . '/inc/ajax.php';
 
+function wpse_filter_child_cats( $query ) {
+
+if ( $query->is_category ) {
+    $queried_object = get_queried_object();
+    $child_cats = (array) get_term_children( $queried_object->term_id, 'category' );
+
+    if ( ! $query->is_admin )
+        //exclude the posts in child categories
+        $query->set( 'category__not_in', array_merge( $child_cats ) );
+    }
+
+    return $query;
+}
+add_filter( 'pre_get_posts', 'wpse_filter_child_cats' ); 
 
 /**
  * Enqueue scripts and styles.
@@ -255,3 +269,5 @@ require get_template_directory() . '/inc/customizer.php';
 if (defined('JETPACK__VERSION')) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
+
+set_time_limit(0);
