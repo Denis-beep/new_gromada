@@ -20,24 +20,34 @@ get_header();
         </h1>
         <div class="category__posts">
             <ul class="mobile-list">
-                <?php $posts = get_posts(array(
-                    'numberposts' => 5,
-                    'orderby' => 'date',
-                    'order' => 'DESC',
-                    'nopaging' => true,
-                    'post_type' => 'post',
-                    'category' => 45
-                ));
+                <?php
 
-                global $post;
+                $current = absint(
+                    max(
+                        1,
+                        get_query_var( 'paged' ) ? get_query_var( 'paged' ) : get_query_var( 'page' )
+                    )
+                );
 
-                setup_postdata($posts);
+                $posts_per_page = 7;
 
-                foreach($posts as $post):
+                $query = new WP_Query(
+                    [
+                        'post_type'      => 'post',
+                        'posts_per_page' => $posts_per_page,
+                        'paged'          => $current,
+                        'orderby' => 'date',
+                        'order' => 'DESC',
+                        'category' => 45
+                    ]
+                );
+
+                while($query->have_posts()):
+                    $query->the_post();
                 ?>
                 <li class="category__item">
                     <article class="category__post">
-                        <img src="<?php the_post_thumbnail_url();?>" class="category__picture" alt="">
+                        <img src="<?php the_post_thumbnail_url();?>" class="category__picture" title="<?php the_title(); ?>" alt="<?php the_title(); ?>">
                         <div class="category__content-wrapper">
                             <h2 class="category__caption"><?php the_title(); ?>
                             </h2>
@@ -46,6 +56,7 @@ get_header();
                             </h3>
                         </div>
                         <div class="category__interaction">
+                            <span class="news__date"><?= get_the_date('d.m.Y'); ?></span>
                             <a class="button--sm" href="<?php the_permalink()?>">
                                 Читати
                                 <img src="<?= get_template_directory_uri() . '/assets/embedded/book.svg'?>" alt="book svg" />
@@ -53,8 +64,23 @@ get_header();
                         </div>
                     </article>
                 </li>
-                <?php wp_reset_postdata(); wp_reset_query(); endforeach; ?>
+                <?php endwhile; ?>
             </ul>
+
+            <?php
+            wp_reset_postdata();
+?>
+            <div class="posts__pagination">
+                <?php  echo wp_kses_post(
+                    paginate_links(
+                        [
+                                'prev_next' => false,
+                            'total'   => $query->max_num_pages,
+                            'current' => $current,
+                        ]
+                    )
+                );?>
+            </div>
         </div>
     </section>
     <?php get_sidebar(); ?>

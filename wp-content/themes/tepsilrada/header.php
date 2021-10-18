@@ -21,6 +21,38 @@ $uri = get_template_directory_uri();
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;&display=swap"
           rel="stylesheet">
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Self-government body",
+            "name": "Teplitska rural community",
+            "image": "https://mlbu23yyhbqp.i.optimole.com/udaTywc.G0Bj~4753a/w:480/h:668/q:auto/http://gromada.loc/wp-content/uploads/2021/02/cropped-teplitsya_logo-e1613208652291.jpg",
+            "@id": "",
+            "url": "https://ra-devs.com/",
+            "telephone": "(04845) 5-62-22",
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Teplitsya",
+                "postalCode": "68421",
+                "addressCountry": "Ukraine"
+            },
+            "openingHoursSpecification": {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": [
+                    "Monday",
+                    "Tuesday",
+                    "Wednesday",
+                    "Thursday",
+                    "Friday",
+                    "Saturday",
+                    "Sunday"
+                ],
+                "opens": "9:00",
+                "closes": "18:00"
+            }
+        }
+    </script>
+
     <?php wp_head(); ?>
 </head>
 

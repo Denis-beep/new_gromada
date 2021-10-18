@@ -108,21 +108,20 @@ get_header();
                     <ul class="mobile-list news">
                         <?php
                         $posts = get_posts(array(
-                            'numberposts' => 5,
+                            'numberposts' => 7,
                             'orderby' => 'date',
                             'order' => 'DESC',
                             'category' => 45
                         ));
 
-                        global $post;
-
-                        setup_postdata($posts);
-
                         foreach ($posts as $index => $post) : ?>
                             <?php get_template_part('template-parts/content', 'page'); ?>
-                        <?php endforeach; ?>
-                        <?php wp_reset_postdata(); ?>
+                        <?php endforeach;
+                        ?>
                     </ul>
+                    <?php
+                    $after_content = apply_filters('after_posts_content', $posts);
+                    ?>
                 </section>
                 <section class="deputies section">
                     <h1 class="title--thin"><?= get_field('deputy_corps_title', 'options'); ?></h1>
@@ -157,4 +156,4 @@ get_header();
         </article>
         <?php get_sidebar(); ?>
     </main>
-<?php endif; wp_reset_query(); wp_reset_postdata(); get_footer(); ?>
+<?php endif; get_footer(); ?>

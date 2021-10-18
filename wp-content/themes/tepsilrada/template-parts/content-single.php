@@ -9,13 +9,13 @@
  */
 get_header( )
 ?>
-    <? global $post ?>
+<?php global $post ?>
 	<main id="primary" class="post-item__main">
 	<article class="post__single | wow fadeInLeftBig" role="article ">
             <h1 class="post title"><?php the_title();?></h1>
             <p class="post__text">
-            <? if(get_the_post_thumbnail_url() !== false) : ?>
-                <img src="<? the_post_thumbnail_url([1200, 450]); ?>" alt="Прикріплене до новини фото">
+                <?php if(get_the_post_thumbnail_url() !== false) : ?>
+                <img src="<?php the_post_thumbnail_url([1200, 450]); ?>" alt="<?php the_title(); ?>">
                 <?php endif ?>
                 <?php the_content();?>
             </p>
@@ -26,4 +26,4 @@ get_header( )
 ?>
 	</main>
 
-    <? get_footer() ?>
+<?php get_footer() ?>

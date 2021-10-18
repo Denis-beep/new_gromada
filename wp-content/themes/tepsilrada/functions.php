@@ -271,3 +271,18 @@ if (defined('JETPACK__VERSION')) {
 }
 
 set_time_limit(0);
+
+function after_posts_content($posts) {
+    $url = esc_url(get_permalink( get_option( 'page_for_posts' ) ));
+    echo "<div class='news__all'><a class='button--sm' href='$url'>Усi новини</a></div>";
+}
+add_filter('after_posts_content', 'after_posts_content');
+
+add_filter('navigation_markup_template', 'my_navigation_template', 10, 2 );
+function my_navigation_template( $template, $class ){
+    return '
+	<nav class="navigation %1$s" role="navigation">
+		<div class="nav-links">%3$s</div>
+	</nav>    
+	';
+}
