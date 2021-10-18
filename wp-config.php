@@ -17,50 +17,35 @@
  *
  * @package WordPress
  */
-
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define( 'DB_NAME', "gromada" );
-
+define( 'DB_NAME', "gromada_db" );
 /** MySQL database username */
 define( 'DB_USER', "root" );
-
 /** MySQL database password */
 define( 'DB_PASSWORD', "" );
-
 /** MySQL hostname */
 define( 'DB_HOST', "localhost" );
-
 /** Database Charset to use in creating database tables. */
 define( 'DB_CHARSET', 'utf8mb4' );
-
 /** The Database Collate type. Don't change this if in doubt. */
 define( 'DB_COLLATE', '' );
-
 // Имя пользователя для SMTP авторизации
 define( 'SMTP_USER', 'denis.patriev@gmail.com' );
-
 // Пароль пользователя для SMTP авторизации
 define( 'SMTP_PASS', 'codname47');
-
 // Хост почтового сервера
 define( 'SMTP_HOST', 'smtp.gmail.com' );
-
 // Обратный Email
 define( 'SMTP_FROM', 'gromada@gmail.com' );
-
 // Имя для обратного мыла
 define( 'SMTP_NAME', 'Громадянин' );
-
 // Номер порта (25, 465, 587)
 define( 'SMTP_PORT', 587 );
-
 // Тип шифиования (ssl или tls)
 define( 'SMTP_SECURE', 'tls' );
-
 // Включение/отключение шифрования
 define( 'SMTP_AUTH', true );
-
 /**#@+
  * Authentication Unique Keys and Salts.
  *
@@ -78,9 +63,7 @@ define( 'AUTH_SALT',        'nGxLuk:rehaFO7G*}f}CwI,*ih[|fC[=>A.ez;:uqFf}f}RoC3[
 define( 'SECURE_AUTH_SALT', '%<_X0WY]*:uNlb{kQbFvu64&j y1z`#kK*8x %PfN`=-4%xk3;s^0lY1A&,w]s`l' );
 define( 'LOGGED_IN_SALT',   '9|dT|+VWYgm&{*O(e~O}e#KyLjO!`Mm*rF^0WrF&c>Wt75)THc%@;|HnJ5]}`aGF' );
 define( 'NONCE_SALT',       'y1Ksy~mx#Y0#s#7RCL<oYH(7<Fx+tP;&2&K,b~hpZbtCwF|lFx(r^3V(r4z*m8b(' );
-
 /**#@-*/
-
 /**
  * WordPress Database Table prefix.
  *
@@ -88,7 +71,6 @@ define( 'NONCE_SALT',       'y1Ksy~mx#Y0#s#7RCL<oYH(7<Fx+tP;&2&K,b~hpZbtCwF|lFx(
  * a unique prefix. Only numbers, letters, and underscores please!
  */
 $table_prefix = 'wp_';
-
 /**
  * For developers: WordPress debugging mode.
  *
@@ -104,13 +86,10 @@ $table_prefix = 'wp_';
 define( 'WP_DEBUG', true);
 define( 'WP_DEBUG_LOG', true );
 define( 'WP_DEBUG_DISPLAY', true);
-
 /* That's all, stop editing! Happy publishing. */
-
 /** Absolute path to the WordPress directory. */
 if ( ! defined( 'ABSPATH' ) ) {
 	define( 'ABSPATH', __DIR__ . '/' );
 }
-
 /** Sets up WordPress vars and included files. */
 require_once ABSPATH . 'wp-settings.php';
